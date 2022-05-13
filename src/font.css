@@ -1,0 +1,9 @@
+@charset "UTF-8";
+@font-face {
+  font-family: 'HC丸ゴ';
+  src: url('font/hc-too5.ttf') format('truetype');
+}
+@font-face {
+  font-family: 'Roboto-Medium';
+  src: url('font/Roboto-Medium.ttf') format('truetype');
+}

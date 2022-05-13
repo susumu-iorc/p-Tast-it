@@ -1,0 +1,43 @@
+# httpd.conf に定義してある関数
+
+<IfModule mod_rewrite.c>
+
+
+RewriteEngine on
+
+ErrorDocument 401 /error/401
+ErrorDocument 403 /error/403
+ErrorDocument 404 /error/404
+ErrorDocument 500 /error/500
+ErrorDocument 503 /error/503
+
+RewriteRule ^error/(.*)$ ./index.php?pageType=error&pageData=$1 [L]
+
+#どうするか検討
+#RewriteRule ^user/(.*)/$ /user/$1 [R=301,L]
+#RewriteRule ^user/(.*)$ ./index.php?pageType=user&pageData=$1 [L]
+
+RewriteRule ^regist/(.*)/$ /regist/$1 [R=301,L]
+RewriteRule ^regist/(.*)$ ./index.php?pageType=regist&pageData=$1 [L]
+
+RewriteRule ^posting$ ./index.php?pageType=posting&pageData=0 [L]
+RewriteRule ^posting/(.*)$ /posting [R=301,L]
+
+RewriteRule ^sample$ ./index.php?pageType=login&pageData=sample
+
+RewriteRule ^login$ ./index.php?pageType=login&pageData=0 [L]
+RewriteRule ^login/(.*)$ /login [R=301,L]
+
+RewriteRule ^process$ ./index.php?pageType=process [L]
+
+RewriteRule ^icon/(.*)$ ./resource.php?pageType=icon&size=S&pageData=$1 [L]
+RewriteRule ^interface/(.*)$ ./resource.php?pageType=ui&pageData=$1
+
+RewriteRule ^regist$ ./index.php?pageType=regist&pageData=0 [L]
+
+RewriteRule ^home/(\d+)$ ./index.php?pageType=home&pageData=$1 [L]
+RewriteRule ^home/(\d+)/$ /home/$1 [R=301,L]
+
+RewriteRule ^home$ ./index.php?pageType=home&pageData=0 [L]
+RewriteRule ^home/(.*)$ /home [R=301,L]
+</IfModule>
